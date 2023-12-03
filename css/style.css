@@ -1,0 +1,275 @@
+* { 
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+ul {
+    list-style: none;
+}
+
+body {
+    background: #faf6ed;
+    color: #222;
+    -webkit-font-smoothing: antialiased;
+    display: grid;
+    grid-template-columns: 1fr 120px minmax(300px, 800px) 1fr;
+}
+
+.menu {
+    grid-column: 3/5;    
+    background: #fb5;
+    margin: 2rem 0;
+}
+
+.menu ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.menu li a {
+    display: block;
+    padding: 20px;
+    color: #222;
+    text-decoration: none;
+    font: 600 0.875rem/1 'IBM Plex Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+}
+
+.grid-section {
+    display: grid;
+    grid-template-columns: 90px 300px 1fr;
+    grid-column: 2/4;
+    width: 100%;
+    grid-gap: 20px;
+    padding: 10px;
+    margin-bottom: 4rem;
+}
+
+.titulo {
+    font: 400 6rem/1 'Playfair Display SC', serif;
+    grid-column: 1/4;
+    margin-bottom: 1rem;
+}
+
+/* SECTION ANIMAIS */
+.animais h2 {
+    font: 600 1rem/1 'IBM Plex Mono', monospace;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    color: #e54;
+    letter-spacing: .1em;
+}
+
+.animais h2::before {
+    content: '';
+    display: inline-block;
+    width: 40px;
+    height: 10px;
+    margin-right: 10px;
+    background: #fb5;
+}
+
+.animais p {
+    font: 400 1rem/1.2 'Helvetica', Arial;
+    margin-bottom: 1rem;
+}
+
+.animais-lista {
+    height: 370px;
+    overflow-y: scroll;
+    grid-column: 2;
+}
+
+
+.animais-lista li {
+    cursor: pointer;
+}
+
+.animais-lista::-webkit-scrollbar {
+    width: 18px;
+    
+}
+
+.animais-lista::-webkit-scrollbar-thumb {
+    background: #fb5;
+    border-left: 4px solid #faf6ed;
+    border-right: 4px solid #faf6ed;
+}
+.animais-lista::-webkit-scrollbar-track {
+    background: #faf6ed;
+}
+
+.animais-descricao {
+    grid-column: 3;
+}
+
+.animais-descricao section.ativo {
+    display: block;
+    animation: showRight .5s forwards;
+}
+
+@keyframes showRight {
+    from {
+        opacity: 0;
+        transform: translate3d(-35px, 0, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.animais-descricao section {
+    display: none;
+    margin-bottom: 3rem;
+}
+
+/* SECTION FAQ */
+.faq-lista {
+    grid-column: 2/4;
+}
+
+.faq-lista dt {
+    font: 600 1rem/1 'IBM Plex Mono', monospace;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: #e54;
+    cursor: pointer;
+}
+
+.faq-lista dt::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 10px;
+    background: #fb5;
+    margin-right: 10px;
+}
+
+.faq-lista dt::after {
+    content: '▼';
+    margin-left: 10px;
+}
+
+.faq-lista dt.ativo::after {
+    content: '▲';
+}
+
+.faq-lista dd {
+    display: none;
+    font: 500 1rem/1.2 Helvetica, Arial; 
+    margin: 0 0 .5rem 30px;
+}
+
+.faq-lista dd.ativo {
+    display: block;
+    animation: showDown .5s backwards;
+}
+
+@keyframes showDown {
+    from {
+        opacity: 0;
+        transform: translate3d(0, -10px, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+/* SECTION CONTATO */
+.mapa {
+    grid-column: 2;
+}
+
+.dados {
+    grid-column: 3;
+}
+
+.dados li {
+    font: 500 1rem/1.2 Helvetica, Arial; 
+    margin-bottom: 1rem;
+}
+
+.dados li::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 10px;
+    background: #fb5;
+    margin-right: 10px;
+}
+
+/* FOOTER */
+
+.copy {
+    grid-column: 3/5;
+    background: #fb5;
+    margin-bottom: 2rem;
+}
+
+.copy p {
+    padding: 20px;
+    font: 600 1rem/1 'IBM Plex Mono', monospace;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 700px) {
+    body {
+        grid-template-columns: 1fr;
+    }
+
+    .menu, .grid-section, .copy {
+        grid-column: 1;
+    }
+
+    .grid-section {
+        grid-template-columns: 100px 1fr;
+        grid-gap: 10px;
+        margin-bottom: 2rem;
+    }
+
+    .animais-lista {
+        grid-column: 1;
+    }
+
+    .faq-lista, .dados, .mapa {
+        grid-column: 1/3;
+    }
+
+    .grid-section h1 {
+        font-size: 3rem;
+    }
+
+    .menu {
+        margin: 0 0 2rem 0;
+    }
+
+    .copy {
+        margin-bottom: 0;
+    }
+}
+
+/* ANIMAÇÃO SCROLL */
+
+.js-scroll {
+    opacity: 0;
+    transform: translate3d(-30px, 0, 0);
+}
+
+.js-scroll.ativo {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    transition: .3s;
+}
